@@ -79,6 +79,10 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 .big{font-size:3.4rem;font-weight:700;line-height:1.2}
 .huge{font-size:clamp(4rem,11vw,8rem);font-weight:700;line-height:1.1}
 .rom{color:var(--muted);font-size:1.05rem}
+.hrom{display:block;font-size:1rem;font-weight:400;color:var(--muted);margin-top:2px}
+.chip small{display:block;font-size:.75rem;font-weight:400;color:var(--muted)}
+.frame .rom{font-size:1rem;line-height:1.3;margin-bottom:6px}
+.pcard .lab small+small{font-size:.75rem}
 .en{color:var(--muted);font-style:italic}
 .card{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:18px 22px}
 .prompt{font-size:1.4rem;font-weight:500}
@@ -199,7 +203,7 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
   <div class="body"><div class="row">
     <div>
       <p class="kicker">Chapter 1 · Names and countries</p>
-      <h1 lang="ko">1과 · 저는 나비예요</h1>
+      <h1 lang="ko">1과 · 저는 나비예요<span class="hrom">il-gwa · jeo-neun na-bi-ye-yo</span></h1>
       <p class="sub">I am Nabi.</p>
       <div class="card"><b>Today we will learn to:</b>
         <ul style="margin:6px 0 0">
@@ -215,12 +219,12 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 <!-- 1 warm-up chat -->
 <section class="slide" data-stage="warm" data-notes="Give students one minute to type in the chat. Read a few aloud and greet each student: <b>안녕하세요, ___!</b> Spelling help in Hangul is fine.">
   <p class="kicker">Warm-up</p>
-  <h2 lang="ko">안녕하세요!</h2>
+  <h2 lang="ko">안녕하세요!<span class="hrom">an-nyeong-ha-se-yo!</span></h2>
   <div class="body">
-    <p class="prompt">Type in the chat: <b lang="ko">안녕하세요!</b> + your name in Hangul.</p>
+    <p class="prompt">Type in the chat: <b lang="ko">안녕하세요!</b> (an-nyeong-ha-se-yo!) + your name in Hangul.</p>
     <div class="chat" style="max-width:520px">
-      <div class="line l"><div class="bub c-pink"><div class="who" lang="ko">나비</div><div class="ko" lang="ko">안녕하세요! 나비</div></div></div>
-      <div class="line r step hid"><div class="bub c-yellow"><div class="who" lang="ko">벨라</div><div class="ko" lang="ko">안녕하세요! 벨라</div></div></div>
+      <div class="line l"><div class="bub c-pink"><div class="who" lang="ko">나비</div><div class="ko" lang="ko">안녕하세요! 나비</div><div class="rom">an-nyeong-ha-se-yo! na-bi</div></div></div>
+      <div class="line r step hid"><div class="bub c-yellow"><div class="who" lang="ko">벨라</div><div class="ko" lang="ko">안녕하세요! 벨라</div><div class="rom">an-nyeong-ha-se-yo! bel-la</div></div></div>
     </div>
   </div>
 </section>
@@ -243,7 +247,7 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 <!-- 3 countries -->
 <section class="slide" data-stage="pres" data-notes="Point to a landmark and ask <b>어느 나라?</b> (Which country?). Click the card to hear the country name and show it. Students repeat after the recording.">
   <p class="kicker">Presentation · 어휘</p>
-  <h2 lang="ko">나라 · Countries</h2>
+  <h2 lang="ko">나라 · Countries<span class="hrom">na-ra</span></h2>
   <div class="body">
     <div class="cgrid" id="cgrid"></div>
     <div class="btns"><button class="btn" id="cAll" type="button">Show all</button><button class="btn" id="cHide" type="button">Hide all</button></div>
@@ -253,9 +257,9 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 <!-- 4 country + 사람 -->
 <section class="slide" data-stage="pres" data-notes="Tap a country to build its nationality and hear it. Students repeat. Ask: <b>How do you say ‘a French person’?</b>">
   <p class="kicker">Presentation · 어휘</p>
-  <h2 lang="ko">나라 + 사람</h2>
+  <h2 lang="ko">나라 + 사람<span class="hrom">na-ra + sa-ram</span></h2>
   <div class="body">
-    <p class="prompt">Put <b lang="ko">사람</b> (person) after a country to say where someone is from.</p>
+    <p class="prompt">Put <b lang="ko">사람</b> (sa-ram, person) after a country to say where someone is from.</p>
     <div class="chips" id="natChips"></div>
     <div class="card" style="min-height:150px">
       <div class="formula" id="natF" lang="ko"><span>미국</span><span class="plus">+</span><span>사람</span><span class="plus">→</span><span>미국 사람</span></div>
@@ -268,7 +272,7 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 <!-- 5 expression name -->
 <section class="slide" data-stage="pres" data-notes="Model both lines. Then ask a few students <b>이름이 뭐예요?</b> and have them answer <b>저는 ___.</b> (just the name is fine for now).">
   <p class="kicker">Presentation · 표현</p>
-  <h2 lang="ko">이름이 뭐예요?</h2>
+  <h2 lang="ko">이름이 뭐예요?<span class="hrom">i-reu-mi mwo-ye-yo? · What is your name?</span></h2>
   <div class="body"><div class="row">
     <div class="chat">
       <div class="line l step hid"><div class="bub c-pink"><div class="who" lang="ko">나비</div><div class="ko" lang="ko">이름이 뭐예요?</div><div class="rom">i-reu-mi mwo-ye-yo?</div><div class="en">What is your name?</div></div></div>
@@ -281,7 +285,7 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 <!-- 6 expression country -->
 <section class="slide" data-stage="pres" data-notes="Model both lines. Ask students <b>어느 나라 사람이에요?</b> They can answer with any country from the list.">
   <p class="kicker">Presentation · 표현</p>
-  <h2 lang="ko">어느 나라 사람이에요?</h2>
+  <h2 lang="ko">어느 나라 사람이에요?<span class="hrom">eo-neu na-ra sa-ra-mi-e-yo? · What country are you from?</span></h2>
   <div class="body"><div class="row">
     <div class="chat">
       <div class="line l step hid"><div class="bub c-pink"><div class="who" lang="ko">나비</div><div class="ko" lang="ko">어느 나라 사람이에요?</div><div class="rom">eo-neu na-ra sa-ra-mi-e-yo?</div><div class="en">What country are you from?</div></div></div>
@@ -294,17 +298,17 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 <!-- 7 grammar -->
 <section class="slide" data-stage="pres" data-notes="Pick a word, then ask: <b>Look at the last block. Is there a bottom consonant?</b> Click <b>Check</b> to show the block’s letters, then <b>Add the ending</b>.">
   <p class="kicker">Presentation · 문법</p>
-  <h2 lang="ko">-이에요 / -예요</h2>
+  <h2 lang="ko">-이에요 / -예요<span class="hrom">-i-e-yo / -ye-yo</span></h2>
   <div class="body">
     <div class="rule">
-      <div class="o"><b>받침 O</b> (bottom consonant) → <b lang="ko">-이에요</b></div>
-      <div class="x"><b>받침 X</b> (no bottom consonant) → <b lang="ko">-예요</b></div>
+      <div class="o"><b>받침 O</b> (bottom consonant) → <b lang="ko">-이에요</b> (-i-e-yo)</div>
+      <div class="x"><b>받침 X</b> (no bottom consonant) → <b lang="ko">-예요</b> (-ye-yo)</div>
     </div>
     <div class="chips" id="gChips"></div>
     <div class="card" style="display:grid;gap:12px">
-      <div class="word" id="gWord" lang="ko"></div>
+      <div class="word" id="gWord" lang="ko"></div><div class="rom" id="gRom" style="font-size:1.3rem"></div>
       <div class="jamo" id="gJamo" aria-live="polite"></div>
-      <div class="result" id="gRes" lang="ko"></div>
+      <div class="result" id="gRes" lang="ko"></div><div class="rom" id="gResR" style="font-size:1.3rem"></div>
       <div class="btns"><button class="btn" id="gCheck" type="button">Check the last block</button><button class="btn primary" id="gAdd" type="button">Add the ending</button></div>
     </div>
   </div>
@@ -313,21 +317,21 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 <!-- 8 questions -->
 <section class="slide" data-stage="pres" data-notes="Say both lines with clear intonation. Students copy your voice. Then say random lines and students show ↗ or ↘ with a hand.">
   <p class="kicker">Presentation · 문법</p>
-  <h2 lang="ko">질문 · Questions</h2>
+  <h2 lang="ko">질문 · Questions<span class="hrom">jil-mun</span></h2>
   <div class="body">
     <p class="prompt">Same words. Your voice makes the question.</p>
-    <div class="card step hid"><div class="big" lang="ko">한국 사람이에요. <span style="color:var(--blue)">↘</span></div><div class="en" style="font-size:1.2rem">I am Korean.</div></div>
-    <div class="card step hid"><div class="big" lang="ko">한국 사람이에요? <span style="color:var(--coral)">↗</span></div><div class="en" style="font-size:1.2rem">Are you Korean?</div></div>
+    <div class="card step hid"><div class="big" lang="ko">한국 사람이에요. <span style="color:var(--blue)">↘</span></div><div class="rom" style="font-size:1.3rem">han-guk sa-ra-mi-e-yo.</div><div class="en" style="font-size:1.2rem">I am Korean.</div></div>
+    <div class="card step hid"><div class="big" lang="ko">한국 사람이에요? <span style="color:var(--coral)">↗</span></div><div class="rom" style="font-size:1.3rem">han-guk sa-ra-mi-e-yo?</div><div class="en" style="font-size:1.2rem">Are you Korean?</div></div>
   </div>
 </section>
 
 <!-- 9 sort drill -->
 <section class="slide" data-stage="prac" data-notes="Show a word. Students say the full word with the ending, out loud or in the chat. Click the ending the class chose. Keep a fast pace.">
   <p class="kicker">Practice · 받침 check</p>
-  <h2>-이에요 or -예요?</h2>
+  <h2>-이에요 or -예요?<span class="hrom">-i-e-yo or -ye-yo?</span></h2>
   <div class="body" style="align-items:center;text-align:center">
     <div class="word" id="dWord" lang="ko"></div>
-    <div class="result" id="dRes" lang="ko" style="min-height:1.3em"></div>
+    <div class="rom" id="dRom" style="font-size:1.3rem"></div><div class="result" id="dRes" lang="ko" style="min-height:1.3em"></div><div class="rom" id="dResR" style="font-size:1.3rem;min-height:1.4em"></div>
     <div class="targets"><button class="target" type="button" data-e="이에요" lang="ko">-이에요</button><button class="target" type="button" data-e="예요" lang="ko">-예요</button></div>
     <div class="btns" style="justify-content:center"><span class="score" id="dScore"></span><button class="btn primary" id="dNext" type="button">Next word</button></div>
   </div>
@@ -336,9 +340,9 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 <!-- 10 conversation 1 -->
 <section class="slide" data-stage="prac" data-notes="Reveal each line and read it aloud. Then choral read: half the class reads 나비, half reads 벨라. Switch.">
   <p class="kicker">Practice · 읽기</p>
-  <h2 lang="ko">대화 1 · 나비 meets 벨라</h2>
+  <h2 lang="ko">대화 1 · 나비 meets 벨라<span class="hrom">dae-hwa il · na-bi meets bel-la</span></h2>
   <div class="body"><div class="row" style="align-items:flex-start">
-    <div class="chat convo no-rom no-en">
+    <div class="chat convo no-en">
       <div class="line l step hid"><div class="bub c-pink"><div class="who" lang="ko">나비</div><div class="ko" lang="ko">안녕하세요.</div><div class="rom">an-nyeong-ha-se-yo.</div><div class="en">Hello.</div></div></div>
       <div class="line r step hid"><div class="bub c-yellow"><div class="who" lang="ko">벨라</div><div class="ko" lang="ko">안녕하세요.</div><div class="rom">an-nyeong-ha-se-yo.</div><div class="en">Hello.</div></div></div>
       <div class="line l step hid"><div class="bub c-pink"><div class="who" lang="ko">나비</div><div class="ko" lang="ko">이름이 뭐예요?</div><div class="rom">i-reu-mi mwo-ye-yo?</div><div class="en">What is your name?</div></div></div>
@@ -350,7 +354,7 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
     </div>
     <div style="display:grid;gap:12px;flex:0 1 380px">
       <img class="img" data-src="scene:reading-1" alt="나비 greets 벨라 near the classroom door">
-      <div class="btns"><button class="btn" data-tog="rom" type="button">Romanization</button><button class="btn" data-tog="en" type="button">English</button></div>
+      <div class="btns"><button class="btn primary" data-tog="rom" type="button">Romanization</button><button class="btn" data-tog="en" type="button">English</button></div>
     </div>
   </div></div>
 </section>
@@ -358,16 +362,16 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
 <!-- 11 conversation 2 -->
 <section class="slide" data-stage="prac" data-notes="Same routine as 대화 1. Point out that 아론 and 하늘 both say 한국 사람이에요 — one asks, one answers.">
   <p class="kicker">Practice · 읽기</p>
-  <h2 lang="ko">대화 2 · 하늘 meets 아론</h2>
+  <h2 lang="ko">대화 2 · 하늘 meets 아론<span class="hrom">dae-hwa i · ha-neul meets a-ron</span></h2>
   <div class="body"><div class="row" style="align-items:flex-start">
-    <div class="chat convo no-rom no-en">
+    <div class="chat convo no-en">
       <div class="line l step hid"><div class="bub c-lav"><div class="who" lang="ko">아론</div><div class="ko" lang="ko">한국 사람이에요?</div><div class="rom">han-guk sa-ra-mi-e-yo?</div><div class="en">Are you Korean?</div></div></div>
       <div class="line r step hid"><div class="bub c-mint"><div class="who" lang="ko">하늘</div><div class="ko" lang="ko">네, 한국 사람이에요. 어느 나라 사람이에요?</div><div class="rom">ne, han-guk sa-ra-mi-e-yo. eo-neu na-ra sa-ra-mi-e-yo?</div><div class="en">Yes, I am Korean. What country are you from?</div></div></div>
       <div class="line l step hid"><div class="bub c-lav"><div class="who" lang="ko">아론</div><div class="ko" lang="ko">저는 미국 사람이에요.</div><div class="rom">jeo-neun mi-guk sa-ra-mi-e-yo.</div><div class="en">I am American.</div></div></div>
     </div>
     <div style="display:grid;gap:12px;flex:0 1 380px">
       <img class="img" data-src="scene:reading-2" alt="하늘 and 아론 talking in the school hallway">
-      <div class="btns"><button class="btn" data-tog="rom" type="button">Romanization</button><button class="btn" data-tog="en" type="button">English</button></div>
+      <div class="btns"><button class="btn primary" data-tog="rom" type="button">Romanization</button><button class="btn" data-tog="en" type="button">English</button></div>
     </div>
   </div></div>
 </section>
@@ -387,10 +391,10 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
     <div class="drawn" id="draw">
       <img id="drImg" alt="" hidden>
       <div class="frame" lang="ko">
-        <div>안녕하세요.</div>
-        <div>저는 <b id="drN">___</b><span id="drE1">이에요/예요</span>.</div>
-        <div>저는 <b id="drC">___</b> 사람이에요.</div>
-        <div class="ok" id="drAns" hidden></div>
+        <div>안녕하세요.</div><div class="rom">an-nyeong-ha-se-yo.</div>
+        <div>저는 <b id="drN">___</b><span id="drE1">이에요/예요</span>.</div><div class="rom">jeo-neun <span id="drNR">___</span>-i-e-yo / -ye-yo.</div>
+        <div>저는 <b id="drC">___</b> 사람이에요.</div><div class="rom">jeo-neun <span id="drCR">___</span> sa-ra-mi-e-yo.</div>
+        <div class="ok" id="drAns" hidden></div><div class="rom" id="drAnsR" hidden></div>
       </div>
     </div>
     <div class="btns" style="justify-content:center"><button class="btn primary" id="drBtn" type="button">Draw a card</button><button class="btn" id="drShow" type="button">Show the answer</button></div>
@@ -404,9 +408,9 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
   <div class="body">
     <div class="row" style="align-items:flex-start;gap:18px">
       <div class="card" style="flex:1 1 300px"><div class="frame" lang="ko" style="font-size:1.3rem;line-height:1.9">
-        <div><span class="pill">Ask</span> <b>이탈리아</b> 사람이에요?</div>
-        <div><span class="pill">Answer</span> 네! <span class="en" lang="en">(or shake your head)</span></div>
-        <div><span class="pill">Guess</span> <b>니코</b>예요?</div>
+        <div><span class="pill">Ask</span> <b>이탈리아</b> 사람이에요?</div><div class="rom">i-tal-li-a sa-ra-mi-e-yo?</div>
+        <div><span class="pill">Answer</span> 네! <span class="en" lang="en">(or shake your head)</span></div><div class="rom">ne!</div>
+        <div><span class="pill">Guess</span> <b>니코</b>예요?</div><div class="rom">ni-ko-ye-yo?</div>
       </div></div>
       <div class="pgrid" id="pgrid" style="flex:3 1 560px"></div>
     </div>
@@ -419,7 +423,7 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
   <p class="kicker">Wrap-up · Exit ticket</p>
   <h2>Introduce yourself in the chat</h2>
   <div class="body">
-    <div class="card"><div class="frame" lang="ko" style="font-size:2rem">저는 <b>___</b>이에요/예요.<br>저는 <b>___</b> 사람이에요.</div></div>
+    <div class="card"><div class="frame" lang="ko" style="font-size:2rem">저는 <b>___</b>이에요/예요.<div class="rom" style="font-size:1.2rem">jeo-neun ___-i-e-yo / -ye-yo.</div>저는 <b>___</b> 사람이에요.<div class="rom" style="font-size:1.2rem">jeo-neun ___ sa-ra-mi-e-yo.</div></div></div>
     <p class="prompt">Check the last block of your name first!</p>
   </div>
 </section>
@@ -430,11 +434,11 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
   <h2>Assignments</h2>
   <div class="body">
     <div class="row" style="align-items:stretch">
-      <a class="card" href="country-match.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="pill">과제 1</span><div class="big" style="font-size:2.2rem;margin-top:6px" lang="ko">나라 매치</div><div>Country Match · landmarks and people</div></a>
-      <a class="card" href="dialogue-builder.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="pill">과제 2</span><div class="big" style="font-size:2.2rem;margin-top:6px" lang="ko">대화 만들기</div><div>Dialogue Builder · order the lines, choose the ending</div></a>
+      <a class="card" href="country-match.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="pill">과제 1</span><div class="big" style="font-size:2.2rem;margin-top:6px" lang="ko">나라 매치</div><div class="rom">na-ra mae-chi</div><div>Country Match · landmarks and people</div></a>
+      <a class="card" href="dialogue-builder.html" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="pill">과제 2</span><div class="big" style="font-size:2.2rem;margin-top:6px" lang="ko">대화 만들기</div><div class="rom">dae-hwa man-deul-gi</div><div>Dialogue Builder · order the lines, choose the ending</div></a>
     </div>
     <p class="prompt">Copy your code at the end and paste it into the Teams quiz.</p>
-    <div class="huge" style="font-size:3.4rem;text-align:center" lang="ko">수고했어요!</div>
+    <div class="huge" style="font-size:3.4rem;text-align:center" lang="ko">수고했어요!</div><div class="rom" style="text-align:center;font-size:1.3rem">su-go-hae-sseo-yo! · Great work!</div>
   </div>
 </section>
 
@@ -485,6 +489,7 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
     {id:'eg',ko:'이집트',rom:'i-jip-teu',en:'Egypt',nat:'an Egyptian',lm:'Pyramids of Giza'}
   ];
   const byId=Object.fromEntries(C.map(c=>[c.id,c]));
+  const NR={'나비':['na-bi','na-bi-ye-yo'],'하늘':['ha-neul','ha-neu-ri-e-yo'],'벨라':['bel-la','bel-la-ye-yo'],'아론':['a-ron','a-ro-ni-e-yo'],'하준':['ha-jun','ha-ju-ni-e-yo'],'유키':['yu-ki','yu-ki-ye-yo'],'웨이':['we-i','we-i-ye-yo'],'니코':['ni-ko','ni-ko-ye-yo'],'디팍':['di-pak','di-pa-gi-e-yo'],'비주':['bi-ju','bi-ju-ye-yo'],'엠마':['em-ma','em-ma-ye-yo'],'카림':['ka-rim','ka-ri-mi-e-yo'],'사람':['sa-ram','sa-ra-mi-e-yo'],'뭐':['mwo','mwo-ye-yo']};
   const PEOPLE=[['kr','하준'],['jp','유키'],['cn','웨이'],['it','니코'],['in','디팍'],['fr','비주'],['uk','엠마'],['eg','카림']];
 
   /* names warm-up */
@@ -503,7 +508,7 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
   $('cHide').onclick=()=>document.querySelectorAll('.ccard').forEach(b=>{b.classList.remove('shown');b.querySelector('.lab').innerHTML='<div class="q">?</div>';});
 
   /* nationality */
-  $('natChips').innerHTML=C.map(c=>'<button class="chip" type="button" data-id="'+c.id+'" aria-pressed="false" lang="ko">'+c.ko+'</button>').join('');
+  $('natChips').innerHTML=C.map(c=>'<button class="chip" type="button" data-id="'+c.id+'" aria-pressed="false" lang="ko">'+c.ko+'<small>'+c.rom+'</small></button>').join('');
   document.querySelectorAll('#natChips .chip').forEach(b=>b.onclick=()=>{
     document.querySelectorAll('#natChips .chip').forEach(x=>x.setAttribute('aria-pressed','false')); b.setAttribute('aria-pressed','true');
     const c=byId[b.dataset.id];
@@ -515,13 +520,14 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
   /* grammar builder */
   const GW=['사람','나비','하늘','벨라','아론','뭐'];
   let gw=GW[0], gStage=0;
-  $('gChips').innerHTML=GW.map(w=>'<button class="chip" type="button" data-w="'+w+'" aria-pressed="false" lang="ko">'+w+'</button>').join('');
+  $('gChips').innerHTML=GW.map(w=>'<button class="chip" type="button" data-w="'+w+'" aria-pressed="false" lang="ko">'+w+'<small>'+NR[w][0]+'</small></button>').join('');
   function gRender(){
     const last=gw[gw.length-1];
     $('gWord').innerHTML=gStage>=1?esc(gw.slice(0,-1))+'<span class="last">'+last+'</span>':esc(gw);
     if(gStage>=1){ const [c,v,f]=parts(last); $('gJamo').innerHTML='<span>'+c+'</span><span>'+v+'</span>'+(f?'<span class="bot">'+f+'</span> <b>받침 O</b>':'<span class="none">no bottom consonant</span> <b>받침 X</b>'); }
     else $('gJamo').innerHTML='';
     $('gRes').innerHTML=gStage>=2?esc(gw)+'<span class="end">'+ending(gw)+'</span>':'';
+    $('gRom').textContent=NR[gw][0]; $('gResR').textContent=gStage>=2?NR[gw][1]:'';
   }
   document.querySelectorAll('#gChips .chip').forEach(b=>b.onclick=()=>{document.querySelectorAll('#gChips .chip').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');gw=b.dataset.w;gStage=0;gRender();});
   $('gCheck').onclick=()=>{gStage=Math.max(gStage,1);gRender();};
@@ -531,13 +537,13 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
   /* sort drill */
   const DW=['아론','유키','하준','엠마','카림','웨이','니코','디팍','비주','하늘','벨라','사람','뭐'];
   let di=0, right=0, tried=0, answered=false;
-  function dShow(){ $('dWord').textContent=DW[di]; $('dRes').textContent=''; answered=false; document.querySelectorAll('.target').forEach(t=>t.classList.remove('right')); $('dScore').textContent='Class score: '+right+' / '+tried; }
+  function dShow(){ $('dWord').textContent=DW[di]; $('dRom').textContent=NR[DW[di]][0]; $('dResR').textContent=''; $('dRes').textContent=''; answered=false; document.querySelectorAll('.target').forEach(t=>t.classList.remove('right')); $('dScore').textContent='Class score: '+right+' / '+tried; }
   document.querySelectorAll('.target').forEach(t=>t.onclick=()=>{
     if(answered) return;
     const w=DW[di], e=ending(w);
     if(t.dataset.e===e){ answered=true; tried++; right++; t.classList.add('right'); $('dRes').innerHTML=esc(w)+'<span class="ok">'+e+'</span>'; chime(); }
     else { t.classList.remove('shake'); void t.offsetWidth; t.classList.add('shake'); answered=true; tried++; const ok=document.querySelector('.target[data-e="'+e+'"]'); ok.classList.add('right'); $('dRes').innerHTML=esc(w)+'<span class="ok">'+e+'</span>'; }
-    $('dScore').textContent='Class score: '+right+' / '+tried;
+    $('dResR').textContent=NR[w][1]; $('dScore').textContent='Class score: '+right+' / '+tried;
   });
   $('dNext').onclick=()=>{di=(di+1)%DW.length;dShow();};
   dShow();
@@ -549,7 +555,7 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
   });
 
   /* checks */
-  const QS=[['What is the new student in 대화 1 called?','벨라'],['What country is 벨라 from?','브라질 · Brazil'],['Is 하늘 Korean?','네! 한국 사람이에요.'],['What country is 아론 from?','미국 · the United States'],['아론 and 하늘 both say 한국 사람이에요. Which one is a question?','아론’s. His voice goes up ↗']];
+  const QS=[['What is the new student in 대화 1 called?','벨라 (bel-la)'],['What country is 벨라 from?','브라질 (beu-ra-jil) · Brazil'],['Is 하늘 Korean?','네! 한국 사람이에요. (ne! han-guk sa-ra-mi-e-yo.)'],['What country is 아론 from?','미국 (mi-guk) · the United States'],['아론 and 하늘 both say 한국 사람이에요. Which one is a question?','아론’s. His voice goes up ↗']];
   $('qlist').innerHTML=QS.map((q,i)=>'<button class="q" type="button" data-i="'+i+'"><span class="n">'+(i+1)+'</span><span>'+esc(q[0])+'</span><span class="a hid">Tap to check</span></button>').join('');
   document.querySelectorAll('.q').forEach(b=>b.onclick=()=>{const a=b.querySelector('.a');a.classList.remove('hid');a.textContent=QS[b.dataset.i][1];a.lang='ko';});
 
@@ -559,13 +565,13 @@ h2{font-size:2rem;line-height:1.2;margin:0 0 14px;font-weight:700}
     let i; do{i=Math.floor(Math.random()*PEOPLE.length);}while(i===lastDraw&&PEOPLE.length>1); lastDraw=i;
     const [id,name]=PEOPLE[i]; drawn={id,name};
     const im=$('drImg'); im.src=DATA.PORT[id]; im.alt=name; im.hidden=false; im.classList.remove('pop'); void im.offsetWidth; im.classList.add('pop');
-    $('drN').textContent=name; $('drC').textContent='___'; $('drE1').textContent='이에요/예요'; $('drAns').hidden=true;
+    $('drN').textContent=name; $('drC').textContent='___'; $('drE1').textContent='이에요/예요'; $('drAns').hidden=true; $('drAnsR').hidden=true; $('drNR').textContent=NR[name][0]; $('drCR').textContent=byId[id].rom;
     $('drC').textContent=byId[id].ko;
   };
-  $('drShow').onclick=()=>{ if(!drawn) return; $('drAns').hidden=false; $('drAns').textContent='저는 '+drawn.name+ending(drawn.name)+'. 저는 '+byId[drawn.id].ko+' 사람이에요.'; };
+  $('drShow').onclick=()=>{ if(!drawn) return; $('drAns').hidden=false; $('drAns').textContent='저는 '+drawn.name+ending(drawn.name)+'. 저는 '+byId[drawn.id].ko+' 사람이에요.'; $('drAnsR').hidden=false; $('drAnsR').textContent='jeo-neun '+NR[drawn.name][1]+'. jeo-neun '+byId[drawn.id].rom+' sa-ra-mi-e-yo.'; };
 
   /* who am I */
-  $('pgrid').innerHTML=PEOPLE.map(([id,n])=>'<button class="pcard" type="button" aria-pressed="false"><img src="'+DATA.PORT[id]+'" alt="'+n+'"><div class="lab" lang="ko">'+n+'<small>'+byId[id].ko+'</small></div></button>').join('');
+  $('pgrid').innerHTML=PEOPLE.map(([id,n])=>'<button class="pcard" type="button" aria-pressed="false"><img src="'+DATA.PORT[id]+'" alt="'+n+'"><div class="lab" lang="ko">'+n+'<small>'+NR[n][0]+'</small><small>'+byId[id].ko+' · '+byId[id].rom+'</small></div></button>').join('');
   document.querySelectorAll('.pcard').forEach(b=>b.onclick=()=>{const on=b.classList.toggle('out');b.setAttribute('aria-pressed',on);});
   $('pReset').onclick=()=>document.querySelectorAll('.pcard').forEach(b=>{b.classList.remove('out');b.setAttribute('aria-pressed','false');});
 
