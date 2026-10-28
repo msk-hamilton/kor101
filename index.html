@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Korean 101</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBFAFF;--surface:#FFFFFF;--ink:#2A2340;--muted:#6B6385;--line:#DDD6EE;--plum:#5B3FA0;--sun:#F6C445;--sun-soft:#FFF3CF;
+  --font:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;color-scheme:light;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root{--bg:#18142A;--surface:#231E3A;--ink:#F1EEFA;--muted:#A9A2C4;--line:#3A3358;--plum:#B9A3F5;--sun-soft:#4A3F1C;color-scheme:dark}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:32px 18px 48px}
+h1{font-size:2.4rem;margin:0;color:var(--plum)}
+.lead{color:var(--muted);margin:4px 0 28px}
+h2{font-size:1.3rem;margin:28px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+a.card{display:block;padding:18px 20px;border:2px solid var(--line);border-radius:16px;background:var(--surface);color:inherit;text-decoration:none}
+a.card:hover,a.card:focus-visible{border-color:var(--plum)}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;background:var(--sun-soft);font-weight:700;font-size:.85rem}
+.t{display:block;font-size:1.35rem;font-weight:700;margin:8px 0 2px}
+.d{color:var(--muted);font-size:.95rem}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Korean 101</h1>
+  <p class="lead">한국어 · Lessons, games and songs</p>
+
+  <h2 lang="ko">1과 · 저는 나비예요 · Names and countries</h2>
+  <div class="grid">
+    <a class="card" href="ch1-lesson.html"><span class="tag">Lesson</span><span class="t" lang="ko">1과 · 저는 나비예요</span><span class="d">The 45-minute interactive lesson</span></a>
+    <a class="card" href="ch1-song.html"><span class="tag">Song</span><span class="t" lang="ko">1과 노래</span><span class="d">Sing along with 나비, 벨라 and 아론</span></a>
+    <a class="card" href="country-match.html"><span class="tag">과제 1</span><span class="t" lang="ko">나라 매치</span><span class="d">Country Match · landmarks and people</span></a>
+    <a class="card" href="dialogue-builder.html"><span class="tag">과제 2</span><span class="t" lang="ko">대화 만들기</span><span class="d">Dialogue Builder · order the lines, choose the ending</span></a>
+    <a class="card" href="name-tag.html"><span class="tag">Project</span><span class="t" lang="ko">나의 한국어 이름표</span><span class="d">My Korean Name Tag</span></a>
+  </div>
+</main>
+</body>
+</html>
