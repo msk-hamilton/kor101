@@ -60,6 +60,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .ln.now{opacity:1;transform:translateX(6px);background:var(--surface)}
 .ln.done{opacity:.7}
 .no-rom .rom{display:none}
+.blankline{display:inline-block;min-width:5.5em;margin:0 .15em;border-bottom:4px solid currentColor;vertical-align:-.1em}
+.blankline.s{min-width:6em;border-bottom-width:2px}
 .no-en .en{display:none}
 
 .title{grid-column:1 / -1;text-align:center;align-self:center}
@@ -138,7 +140,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     const key = v<0||v>=4 ? 'all' : V[v].img;
     document.querySelectorAll('#art img').forEach(im=>im.classList.toggle('on',im.dataset.k===key));
     if(v<0){ ly.innerHTML='<div class="who">1과 노래 · Chapter 1 Song</div><div class="ln now"><div class="ko">안녕하세요!</div><div class="rom">an-nyeong-ha-se-yo!</div><div class="en">Get ready to sing.</div></div>'; ly.style.removeProperty('--vb'); return; }
-    if(v>=4){ ly.innerHTML='<div class="who">Your turn!</div><div class="ln now"><div class="ko">저는 ___이에요/예요.</div><div class="rom" style="display:block">jeo-neun ___-i-e-yo / -ye-yo.</div><div class="en" style="display:block">I am ___.</div></div><div class="ln now"><div class="ko">저는 ___ 사람이에요.</div><div class="rom" style="display:block">jeo-neun ___ sa-ra-mi-e-yo.</div><div class="en" style="display:block">I am from ___.</div></div>'; ly.style.removeProperty('--vb'); return; }
+    if(v>=4){ ly.innerHTML='<div class="who">Your turn!</div><div class="ln now"><div class="ko" style="font-size:clamp(1.4rem,3vw,2.5rem);white-space:nowrap">저는 <span class="blankline"></span>이에요/예요.</div><div class="rom" style="display:block">jeo-neun <span class="blankline s"></span> i-e-yo / ye-yo.</div><div class="en" style="display:block">I am <span class="blankline s"></span>.</div></div><div class="ln now"><div class="ko" style="font-size:clamp(1.4rem,3vw,2.5rem);white-space:nowrap">저는 <span class="blankline"></span> 사람이에요.</div><div class="rom" style="display:block">jeo-neun <span class="blankline s"></span> sa-ra-mi-e-yo.</div><div class="en" style="display:block">I am from <span class="blankline s"></span>.</div></div>'; ly.style.removeProperty('--vb'); return; }
     ly.style.setProperty('--vb','var('+COLORS[v]+')');
     ly.innerHTML='<div class="who" lang="ko">'+V[v].who+'</div>'+V[v].lines.map((l,i)=>'<div class="ln" data-i="'+(v*4+i)+'"><div class="ko">'+l[0]+'</div><div class="rom">'+l[1]+'</div><div class="en">'+l[2]+'</div><div class="bar"></div></div>').join('');
   }

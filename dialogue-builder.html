@@ -108,6 +108,7 @@ details .row{display:grid;gap:8px;margin-top:10px}
 .feedback.bad{color:var(--stamp)}
 
 .poolhead{font-weight:700;margin:6px 0 8px}
+.tipbox{margin:0 0 12px;padding:10px 14px;border-radius:12px;background:var(--sun-soft);border:2px solid var(--sun);font-weight:500}
 .pool{display:grid;gap:10px}
 .pool .bubble{max-width:100%;width:100%;text-align:left;cursor:pointer}
 .pool .bubble:hover{filter:brightness(.97)}
@@ -173,6 +174,7 @@ details .row{display:grid;gap:8px;margin-top:10px}
       </div>
     </div>
     <div class="stage"><span class="pill" id="partPill"></span><span class="convtitle" id="convTitle"></span></div>
+    <p class="tipbox" id="romTip">👉 Tip: Press the <b>Romanization</b> button. It shows English letters that tell you how to say each Korean line. Example: <span lang="ko">안녕하세요</span> → an-nyeong-ha-se-yo.</p>
     <div id="lines" class="no-rom no-en">
       <div class="chat" id="chat" aria-live="polite"></div>
       <p class="feedback" id="feedback" aria-live="polite"></p>
@@ -350,6 +352,7 @@ details .row{display:grid;gap:8px;margin-top:10px}
 
   function toggle(id,cls){ $(id).addEventListener('click',e=>{const on=e.currentTarget.getAttribute('aria-pressed')!=='true';e.currentTarget.setAttribute('aria-pressed',on);$('lines').classList.toggle(cls,!on);}); }
   toggle('romBtn','no-rom'); toggle('enBtn','no-en');
+  $('romBtn').addEventListener('click',()=>{ $('romTip').hidden=$('romBtn').getAttribute('aria-pressed')==='true'; });
   $('soundBtn').addEventListener('click',e=>{soundOn=!soundOn;e.currentTarget.setAttribute('aria-pressed',soundOn);});
 
   function finish(){
