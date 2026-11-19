@@ -14,5 +14,8 @@ Lessons, games and songs for Korean 101.
 | 2과 노래 (song) | chapter2song.html |
 | 누가 가요? · Who’s Leaving? (2과 과제 1) | who-is-leaving.html |
 | 대화 만들기 2 · Dialogue Builder 2 (2과 과제 2) | dialogue-builder-2.html |
+| 3과 · 가족이에요 (lesson) | ch3-lesson.html |
+| 대화 만들기 3 · Dialogue Builder 3 (3과 과제 1, code DB3-) | dialogue-builder-3.html |
+| 우리 가족 · Family drawing (3과 과제 2) | family-draw.html |
 
 Every page is a single self-contained file (pictures and audio are built in), so the site works as soon as GitHub Pages is turned on.

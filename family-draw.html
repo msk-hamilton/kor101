@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>우리 가족 · My Family Drawing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBFAFF; --surface:#FFFFFF; --ink:#2A2340; --muted:#6B6385; --line:#DDD6EE;
+  --plum:#5B3FA0; --plum-soft:#EFEDFF; --sun:#F6C445; --sun-soft:#FFF3CF;
+  --stamp:#D9483B; --ok:#2F8F5B; --ok-soft:#E5F4E4;
+  --font:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  color-scheme:light; box-sizing:border-box;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#18142A; --surface:#231E3A; --ink:#F1EEFA; --muted:#A9A2C4; --line:#3A3358;
+    --plum:#B9A3F5; --plum-soft:#2E2650; --sun:#F6C445; --sun-soft:#4A3F1C;
+    --stamp:#FF7A6B; --ok:#7FD3A0; --ok-soft:#1F3A2B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#18142A; --surface:#231E3A; --ink:#F1EEFA; --muted:#A9A2C4; --line:#3A3358;
+  --plum:#B9A3F5; --plum-soft:#2E2650; --sun:#F6C445; --sun-soft:#4A3F1C;
+  --stamp:#FF7A6B; --ok:#7FD3A0; --ok-soft:#1F3A2B; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.5}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+[hidden]{display:none !important}
+.wrap{max-width:1100px;margin:0 auto;padding:16px}
+
+header{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 16px;margin-bottom:12px}
+header h1{margin:0;font-size:1.9rem;line-height:1.15;color:var(--plum)}
+header .en{color:var(--muted)}
+.how{background:var(--sun-soft);border:2px solid var(--sun);border-radius:14px;padding:10px 16px;margin:0 0 14px}
+.how ol{margin:4px 0 0;padding-left:1.3em}
+.how p{margin:6px 0 0}
+.namerow{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-bottom:12px}
+.namerow label{font-weight:700}
+input[type=text]{padding:10px 12px;border:2px solid var(--line);border-radius:12px;background:var(--surface);min-width:0}
+input[type=text]:focus{border-color:var(--plum);outline:none}
+
+/* tools */
+.tools{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:10px 12px;margin-bottom:14px}
+.group{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.swatch{width:34px;height:34px;border-radius:50%;border:3px solid var(--surface);box-shadow:0 0 0 2px var(--line);padding:0}
+.swatch[aria-pressed="true"]{box-shadow:0 0 0 3px var(--plum)}
+.tool{padding:6px 12px;border:2px solid var(--line);border-radius:999px;background:var(--surface);font-size:.95rem;display:inline-flex;align-items:center;gap:6px}
+.tool[aria-pressed="true"]{border-color:var(--plum);background:var(--plum-soft);color:var(--plum);font-weight:700}
+.dot{display:inline-block;border-radius:50%;background:currentColor}
+
+/* people */
+.people{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
+.person{background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:12px;display:grid;gap:10px}
+.person.active{border-color:var(--plum)}
+.phead{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.phead b{color:var(--plum)}
+.pad{position:relative;width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:#fff;border:2px dashed var(--line);touch-action:none}
+.pad canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+.pad .hint{position:absolute;inset:0;display:grid;place-items:center;color:#B7B0CC;font-size:1rem;pointer-events:none;text-align:center;padding:12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:5px 10px;border:2px solid var(--line);border-radius:12px;background:var(--surface);line-height:1.2;text-align:center}
+.chip small{display:block;font-size:.72rem;color:var(--muted)}
+.chip[aria-pressed="true"]{border-color:var(--ok);background:var(--ok-soft);font-weight:700}
+.chosen{font-size:1.4rem;font-weight:700;min-height:1.5em}
+.chosen .rom{display:block;font-size:.85rem;font-weight:400;color:var(--muted)}
+.small{font-size:.9rem;color:var(--muted)}
+.plain{padding:4px 10px;border:2px solid var(--line);border-radius:999px;background:transparent;font-size:.85rem}
+
+.bottom{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:16px 0}
+.primary{padding:12px 24px;border:0;border-radius:999px;background:var(--plum);color:var(--surface);font-weight:700;font-size:1.05rem}
+.ghost{padding:10px 20px;border:2px solid var(--line);border-radius:999px;background:var(--surface);font-weight:500}
+.err{color:var(--stamp);font-weight:500;min-height:1.4em}
+.check{display:flex;gap:8px;align-items:center}
+
+/* saved picture */
+.saved{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:16px;background:color-mix(in srgb,var(--bg) 88%,transparent)}
+.saved .card{background:var(--surface);border:2px solid var(--plum);border-radius:20px;padding:18px;max-width:640px;width:100%;max-height:94vh;overflow:auto;text-align:center}
+.saved h2{margin:0 0 6px;color:var(--plum)}
+.saved img{width:100%;border-radius:12px;border:2px solid var(--line);background:#fff}
+.saved ol{text-align:left;margin:10px auto;max-width:30em;padding-left:1.4em}
+.saved .actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:8px}
+@media (max-width:560px){ header h1{font-size:1.5rem} .swatch{width:30px;height:30px} }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div>
+      <h1 lang="ko">우리 가족</h1>
+      <div class="en">u-ri ga-jok · My Family</div>
+    </div>
+  </header>
+
+  <div class="how">
+    <b>How to do it</b>
+    <ol>
+      <li>Type your name.</li>
+      <li>Draw a family member in each box. Your family can be real, made up, or a character’s family.</li>
+      <li>Tap a Korean word under each drawing.</li>
+      <li>Press <b>Save my picture</b>. Then upload it in Teams with <b>+ Add work</b>.</li>
+    </ol>
+  </div>
+
+  <div class="namerow">
+    <label for="name">Your name</label>
+    <input type="text" id="name" maxlength="40" autocomplete="name" style="flex:1 1 220px;max-width:340px">
+    <label class="check small"><input type="checkbox" id="sent"> Add a sentence under each person (like <span lang="ko">언니가 있어요.</span>)</label>
+  </div>
+
+  <div class="tools" role="toolbar" aria-label="Drawing tools">
+    <div class="group" id="colors" aria-label="Colors"></div>
+    <div class="group" id="sizes" aria-label="Pen size"></div>
+    <div class="group">
+      <button class="tool" id="eraser" type="button" aria-pressed="false">Eraser</button>
+      <button class="tool" id="undo" type="button">↶ Undo</button>
+    </div>
+  </div>
+
+  <div class="people" id="people"></div>
+
+  <div class="bottom">
+    <button class="ghost" id="addBtn" type="button">+ Add a person</button>
+    <button class="primary" id="saveBtn" type="button">💾 Save my picture</button>
+    <span class="err" id="err" role="alert"></span>
+  </div>
+
+  <section class="saved" id="saved" hidden role="dialog" aria-modal="true" aria-labelledby="savedTitle">
+    <div class="card">
+      <h2 id="savedTitle">잘했어요!</h2>
+      <img id="out" alt="Your family drawing with Korean labels">
+      <ol>
+        <li>Your picture was saved to your <b>Downloads</b>. On an iPad, press and hold the picture and choose <b>Save to Photos</b>.</li>
+        <li>In the Teams assignment, press <b>+ Add work</b> and upload the picture.</li>
+        <li>Press <b>Turn in</b>.</li>
+      </ol>
+      <div class="actions">
+        <a class="primary" id="dl" download="my-family.png" style="text-decoration:none">⬇ Download again</a>
+        <button class="ghost" id="copyImg" type="button">Copy picture</button>
+        <button class="ghost" id="back" type="button">Keep drawing</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const WORDS=[['엄마','eom-ma','mom'],['아빠','a-ppa','dad'],['오빠','o-ppa','older brother (girls say)'],['형','hyeong','older brother (boys say)'],
+    ['언니','eon-ni','older sister (girls say)'],['누나','nu-na','older sister (boys say)'],['동생','dong-saeng','younger brother or sister'],
+    ['할머니','hal-meo-ni','grandma'],['할아버지','ha-ra-beo-ji','grandpa'],['강아지','gang-a-ji','puppy'],['고양이','go-yang-i','cat']];
+  const ROM=Object.fromEntries(WORDS.map(w=>[w[0],w[1]]));
+  const COLORS=['#2A2340','#8B5A3C','#E5534B','#F08A5D','#F6C445','#4CAF7A','#4A90D9','#8E6CD9','#F2A6C2','#FFFFFF'];
+  const SIZES=[4,9,18];
+  const MAX=4, KEY='kor101-family-draw';
+  let color=COLORS[0], size=SIZES[1], erasing=false;
+  const people=[]; // {el, canvas, ctx, word, hist:[]}
+
+  /* ---------- toolbar ---------- */
+  $('colors').innerHTML=COLORS.map((c,i)=>'<button class="swatch" type="button" style="background:'+c+'" data-c="'+c+'" aria-label="Color '+(i+1)+'" aria-pressed="'+(i===0)+'"></button>').join('');
+  $('sizes').innerHTML=SIZES.map((s,i)=>'<button class="tool" type="button" data-s="'+s+'" aria-pressed="'+(i===1)+'" aria-label="'+['Thin','Medium','Thick'][i]+' pen"><span class="dot" style="width:'+(4+i*5)+'px;height:'+(4+i*5)+'px"></span>'+['Thin','Medium','Thick'][i]+'</button>').join('');
+  $('colors').addEventListener('click',e=>{const b=e.target.closest('.swatch'); if(!b) return; color=b.dataset.c; setEraser(false);
+    $('colors').querySelectorAll('.swatch').forEach(x=>x.setAttribute('aria-pressed',x===b));});
+  $('sizes').addEventListener('click',e=>{const b=e.target.closest('[data-s]'); if(!b) return; size=+b.dataset.s;
+    $('sizes').querySelectorAll('[data-s]').forEach(x=>x.setAttribute('aria-pressed',x===b));});
+  function setEraser(on){ erasing=on; $('eraser').setAttribute('aria-pressed',on); }
+  $('eraser').onclick=()=>setEraser(!erasing);
+  let lastActive=null;
+  $('undo').onclick=()=>{ const p=lastActive||people[0]; if(!p||!p.hist.length) return; const img=p.hist.pop(); p.ctx.putImageData(img,0,0); updateHint(p); store(); };
+
+  /* ---------- a person box ---------- */
+  const RES=900; // drawing resolution in pixels
+  function addPerson(saved){
+    if(people.length>=MAX) return;
+    const n=people.length+1, el=document.createElement('section');
+    el.className='person';
+    el.innerHTML='<div class="phead"><b>Person '+n+'</b><button class="plain" type="button" data-act="clear">Clear</button></div>'+
+      '<div class="pad"><canvas width="'+RES+'" height="'+RES+'" aria-label="Drawing box for person '+n+'"></canvas><div class="hint">Draw here</div></div>'+
+      '<div class="chosen" lang="ko"><span class="small" lang="en">Tap a word for this person:</span></div>'+
+      '<div class="chips">'+WORDS.map(w=>'<button class="chip" type="button" lang="ko" data-w="'+w[0]+'" aria-pressed="false" title="'+w[2]+'">'+w[0]+'<small>'+w[1]+'</small></button>').join('')+'</div>';
+    $('people').appendChild(el);
+    const canvas=el.querySelector('canvas'), ctx=canvas.getContext('2d');
+    ctx.fillStyle='#fff'; ctx.fillRect(0,0,RES,RES);
+    const p={el,canvas,ctx,word:'',hist:[],blank:true};
+    people.push(p);
+    if(saved){ if(saved.word) choose(p,saved.word); if(saved.img){ const im=new Image(); im.onload=()=>{ ctx.drawImage(im,0,0,RES,RES); p.blank=false; updateHint(p); }; im.src=saved.img; } }
+    el.querySelector('.chips').addEventListener('click',e=>{const b=e.target.closest('.chip'); if(b){ choose(p,b.dataset.w); store(); }});
+    el.querySelector('[data-act="clear"]').onclick=()=>{ snapshot(p); ctx.fillStyle='#fff'; ctx.fillRect(0,0,RES,RES); p.blank=true; updateHint(p); store(); };
+    wire(p);
+    $('addBtn').hidden=people.length>=MAX;
+  }
+  function choose(p,w){ p.word=w; p.el.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.w===w));
+    p.el.querySelector('.chosen').innerHTML=w+'<span class="rom">'+ROM[w]+'</span>'; }
+  function updateHint(p){ p.el.querySelector('.hint').hidden=!p.blank; }
+  function snapshot(p){ p.hist.push(p.ctx.getImageData(0,0,RES,RES)); if(p.hist.length>15) p.hist.shift(); }
+
+  /* ---------- drawing ---------- */
+  function wire(p){
+    const c=p.canvas; let down=false, last=null, id=null;
+    const pos=e=>{const r=c.getBoundingClientRect(); return [(e.clientX-r.left)*RES/r.width,(e.clientY-r.top)*RES/r.height];};
+    const scale=()=>RES/c.getBoundingClientRect().width;
+    c.addEventListener('pointerdown',e=>{ if(id!==null) return; id=e.pointerId; c.setPointerCapture(id); down=true; snapshot(p);
+      lastActive=p; people.forEach(q=>q.el.classList.toggle('active',q===p));
+      last=pos(e); dot(last); p.blank=false; updateHint(p); e.preventDefault(); });
+    c.addEventListener('pointermove',e=>{ if(!down||e.pointerId!==id) return; const pts=e.getCoalescedEvents?e.getCoalescedEvents():[e];
+      pts.forEach(ev=>{ const q=pos(ev); line(last,q); last=q; }); e.preventDefault(); });
+    const up=e=>{ if(e.pointerId!==id) return; down=false; id=null; store(); };
+    c.addEventListener('pointerup',up); c.addEventListener('pointercancel',up);
+    function style(){ p.ctx.strokeStyle=p.ctx.fillStyle=erasing?'#fff':color; p.ctx.lineWidth=(erasing?size*2.2:size)*scale()*0.9; p.ctx.lineCap=p.ctx.lineJoin='round'; }
+    function dot(a){ style(); p.ctx.beginPath(); p.ctx.arc(a[0],a[1],p.ctx.lineWidth/2,0,Math.PI*2); p.ctx.fill(); }
+    function line(a,b){ style(); p.ctx.beginPath(); p.ctx.moveTo(a[0],a[1]); p.ctx.lineTo(b[0],b[1]); p.ctx.stroke(); }
+  }
+
+  /* ---------- keep work if the page is closed by mistake ---------- */
+  let tStore=null;
+  function store(){ clearTimeout(tStore); tStore=setTimeout(()=>{ try{
+    localStorage.setItem(KEY,JSON.stringify({name:$('name').value,sent:$('sent').checked,people:people.map(p=>({word:p.word,img:p.blank?'':p.canvas.toDataURL('image/jpeg',0.7)}))}));
+  }catch(e){} },400); }
+  $('name').addEventListener('input',store); $('sent').addEventListener('change',store);
+  let saved=null; try{ saved=JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){}
+  if(saved&&saved.people&&saved.people.length){ $('name').value=saved.name||''; $('sent').checked=!!saved.sent; saved.people.slice(0,MAX).forEach(addPerson); }
+  else { addPerson(); addPerson(); }
+  $('addBtn').onclick=()=>{ addPerson(); store(); people[people.length-1].el.scrollIntoView({behavior:'smooth',block:'nearest'}); };
+
+  /* ---------- the saved picture ---------- */
+  const JONG=w=>(w.charCodeAt(w.length-1)-0xAC00)%28;
+  function sentence(w){ const p=JONG(w)?'이':'가'; return [w+p+' 있어요.', ROM[w]+'-'+(p==='이'?'i':'ga')+' i-sseo-yo.']; }
+  async function render(){
+    try{ await document.fonts.load('700 40px "Noto Sans KR"'); await document.fonts.load('400 24px "Noto Sans KR"'); }catch(e){}
+    const F='"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif';
+    const list=people.filter(p=>!p.blank||p.word), n=list.length, cols=n<=2?n:2, rows=Math.ceil(n/cols);
+    const cell=560, gap=36, pad=48, head=180, lab=$('sent').checked?190:120;
+    const W=pad*2+cols*cell+(cols-1)*gap, H=head+rows*(cell+lab)+(rows-1)*gap+pad;
+    const cv=document.createElement('canvas'); cv.width=W; cv.height=H; const g=cv.getContext('2d');
+    g.fillStyle='#FBFAFF'; g.fillRect(0,0,W,H);
+    g.fillStyle='#5B3FA0'; g.font='700 56px '+F; g.textBaseline='alphabetic'; g.fillText('우리 가족',pad,pad+52);
+    g.fillStyle='#6B6385'; g.font='400 26px '+F; g.fillText('u-ri ga-jok · My Family',pad,pad+92);
+    const nm=$('name').value.trim(); g.textAlign='right'; g.fillStyle='#2A2340'; g.font='700 30px '+F; g.fillText(nm,W-pad,pad+52);
+    g.fillStyle='#6B6385'; g.font='400 22px '+F; g.fillText(new Date().toLocaleDateString(),W-pad,pad+92); g.textAlign='left';
+    list.forEach((p,i)=>{
+      const x=pad+(i%cols)*(cell+gap), y=head+Math.floor(i/cols)*(cell+lab+gap);
+      g.fillStyle='#fff'; g.strokeStyle='#DDD6EE'; g.lineWidth=4; roundRect(g,x,y,cell,cell,24); g.fill(); g.save(); roundRect(g,x,y,cell,cell,24); g.clip(); g.drawImage(p.canvas,x,y,cell,cell); g.restore(); roundRect(g,x,y,cell,cell,24); g.stroke();
+      g.textAlign='center'; const cx=x+cell/2;
+      if(p.word){
+        g.fillStyle='#2A2340'; g.font='700 52px '+F; g.fillText(p.word,cx,y+cell+62);
+        g.fillStyle='#6B6385'; g.font='400 26px '+F; g.fillText(ROM[p.word],cx,y+cell+98);
+        if($('sent').checked){ const [k,r]=sentence(p.word); g.fillStyle='#2F8F5B'; g.font='700 36px '+F; g.fillText(k,cx,y+cell+146); g.fillStyle='#6B6385'; g.font='400 22px '+F; g.fillText(r,cx,y+cell+176); }
+      }
+      g.textAlign='left';
+    });
+    return cv;
+  }
+  function roundRect(g,x,y,w,h,r){ g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath(); }
+
+  let lastCanvas=null;
+  $('saveBtn').onclick=async()=>{
+    const err=$('err'), nm=$('name').value.trim();
+    if(!nm){ err.textContent='Type your name first.'; $('name').focus(); return; }
+    const drawn=people.filter(p=>!p.blank);
+    if(drawn.length<2){ err.textContent='Draw at least two people first.'; return; }
+    const unl=drawn.findIndex(p=>!p.word); if(unl>=0){ err.textContent='Tap a Korean word for Person '+(people.indexOf(drawn[unl])+1)+'.'; drawn[unl].el.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+    err.textContent='';
+    lastCanvas=await render();
+    const url=lastCanvas.toDataURL('image/png'), file='my-family-'+nm.replace(/[^\p{L}\p{N}]+/gu,'-').replace(/^-|-$/g,'')+'.png';
+    $('out').src=url; $('dl').href=url; $('dl').download=file;
+    try{ $('dl').click(); }catch(e){}
+    $('copyImg').textContent='Copy picture'; $('saved').hidden=false; $('back').focus();
+  };
+  $('back').onclick=()=>{ $('saved').hidden=true; };
+  $('copyImg').onclick=()=>{
+    if(!lastCanvas||!navigator.clipboard||!window.ClipboardItem){ $('copyImg').textContent='Copy is not available here'; return; }
+    lastCanvas.toBlob(b=>{ navigator.clipboard.write([new ClipboardItem({'image/png':b})]).then(()=>{$('copyImg').textContent='Copied!';},()=>{$('copyImg').textContent='Copy is not available here';}); });
+  };
+})();
+</script>
+</body>
+</html>
